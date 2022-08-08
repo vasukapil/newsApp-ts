@@ -11,8 +11,8 @@ const Homepage:React.FC = () => {
 
     let[data,setData]=useState<any[]>([]);
     const [pageSize,setPageSize]=useState(5);
-    // let [dummy,setDummy]=useState<any[]>(data.slice(0,21));
-    const [page, setPage] = useState(1)
+    let [dummy,setDummy]=useState<any[]>([]);
+    const [page, setPage] = useState<number>(1)
 
 
 
@@ -20,25 +20,32 @@ const Homepage:React.FC = () => {
 
 
         axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=710a8d822eb14b20b65ac4f821e9fa80&page=${page}&pageSize=${pageSize}`)
-        .then(res=>setData(res.data.articles)
+        .then(
+        res=>{
+       setDummy(res.data.articles);
+       if(page>1)
+       {
+           setDummy([...dummy,...res.data.articles]);
+       }
+        }
         
         )
         
         
 
-    },[page,pageSize])
+    },[page])
 
     useEffect(() => {
         const onScroll = function () {
            if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
              console.log("you're at the bottom of the page")
-             setPage(page+1);
-             setPageSize(pageSize+5);
+             setPage(()=>page+1);
+           
            }
         }
         window.addEventListener('scroll', onScroll)
         return () => window.removeEventListener('scroll', onScroll)
-     },[])
+     },)
 
    
 
@@ -49,11 +56,13 @@ const Homepage:React.FC = () => {
 
     // })
 
+
+
    
 
    
-      console.log(data)
-      console.log(page,pageSize)
+      console.log(dummy)
+      console.log(page)
     //   console.log(page)
     //   console.log(pageSize)
     
@@ -64,10 +73,10 @@ const Homepage:React.FC = () => {
         {
 
 
-            data && 
+            dummy && 
             
           
-            data.map((news,idx)=>(
+            dummy.map((news,idx)=>(
 
 
                 <div key={idx}>
