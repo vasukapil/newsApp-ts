@@ -28,35 +28,14 @@ const Homepage = () => {
 
   return (
     <div className="new-wrapper">
-      {data?.map((news, idx) => {
+      {data?.map((news,idx) => {
         return (
           <div key={idx} className="new-item">
             <h3>{news.title}</h3>
-            {/* <img>Hello</img> */}
           </div>
         );
       })}
     </div>
-    // <div>
-    //     {
-    //         dummy &&
-    //         dummy.map((news, idx) => (
-    //             <div key={idx} >
-    //                 <div className="news__component" >
-    //                     <span>{idx + 1}</span>
-    //                     < h2 style={{ display: 'inline-block' }}> {news.title} < /h2>
-    //                         < p onClick={() => { navigate('/category') }}> Read More...</p>
-    //                         < /div>
-    //                         < /div>
-
-    //                         )
-
-    //                         )
-
-    // }
-
-    //                 </div>
-    //                 )
   );
 };
 
