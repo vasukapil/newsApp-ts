@@ -1,22 +1,20 @@
-.news__component{
-
-    height: fit-content;
-    width: auto;
-    border: 1px solid black;
-    margin: 30px;
-     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; ;
-
+.news__component {
+  height: fit-content;
+  width: auto;
+  border: 1px solid black;
+  margin: 30px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 
-.news__component span{
-    margin-right: 10px;
-    padding: 5px;
+.news__component span {
+  margin-right: 10px;
+  padding: 5px;
 }
-.news__component h2{
-    font-size: 20px;
+.news__component h2 {
+  font-size: 20px;
 }
-.news__component p{
-    text-align: end;
-    margin-right: 30px;
-    cursor: pointer;
+.news__component p {
+  text-align: end;
+  margin-right: 30px;
+  cursor: pointer;
 }
