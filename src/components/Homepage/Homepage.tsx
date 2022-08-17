@@ -5,13 +5,12 @@ import './Homepage.css'
 
 
 
-const Homepage: React.FC = () => {
+const Homepage = () => {
 
-    const pageSize = 5;
-    const navigate = useNavigate();
+    const pageSize = 12;
+   
 
     const [data, setData] = useState<any[]>([]);
-    // const [pageSize, setPageSize] = useState(5);
     const [page, setPage] = useState<number>(1)
 
 
@@ -19,7 +18,7 @@ const Homepage: React.FC = () => {
     useEffect(() => {
         (async () => {
             try {
-                const result = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=710a8d822eb14b20b65ac4f821e9fa80&page=${page}&pageSize=${pageSize}`)
+                const result = await axios.get(`https://newsapi.org/v2/top-headlines?country=us&apiKey=e59874d817cb4906b3f619547ebccdd8&page=${page}&pageSize=${pageSize}`)
                 const response = result.data.articles
                 setData([...data, ...response]);
             } catch (error) {
@@ -43,13 +42,16 @@ const Homepage: React.FC = () => {
 
         <div className="new-wrapper">
             {
-                data?.map((news, i) => {
-                    <div className="new-item">
+                data?.map((news,idx) => {
+                    return (
+                    
+                    <div key={idx} className="new-item">
                         <h3>
                             {news.title}
                         </h3>
+                        {/* <img>Hello</img> */}
                     </div>
-                })
+                )})
             }
         </div>
         // <div>

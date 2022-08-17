@@ -1,25 +1,16 @@
-import React from 'react';
+import React from "react";
 
-import './App.css';
-import Homepage from './components/Homepage/Homepage';
-import { BrowserRouter as Router,Routes,Route } from "react-router-dom";
-import Category from './components/Category/Category';
+import "./App.css";
+import Homepage from "./components/Homepage/Homepage";
+import ErrorBound from "./components/ErrorBound";
 
 function App() {
   return (
-    
-
-<Router>
-      <Routes>
-      <Route path="/" element={<Homepage/>}/>
-      <Route path="/category" element={<Category/>}/>
-      
-      
-      </Routes>
-    {/* <Footer/> */}
-  </Router>
-
-  
+    <div>
+      <ErrorBound>
+        <Homepage />
+      </ErrorBound>
+    </div>
   );
 }
 
