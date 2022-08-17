@@ -1,25 +1,19 @@
-import axios from "axios";
 import React, { useState, useEffect } from "react";
+import { getNews } from "./helper";
 import "./Homepage.css";
 
 const Homepage = () => {
   const pageSize = 12;
-
   const [data, setData] = useState<any[]>([]);
   const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
-    (async () => {
-      try {
-        const result = await axios.get(
-          `https://newsapi.org/v2/top-headlines?country=us&apiKey=e59874d817cb4906b3f619547ebccdd8&page=${page}&pageSize=${pageSize}`
-        );
-        const response = result.data.articles;
-        setData([...data, ...response]);
-      } catch (error) {
-        console.log("Error in homepage", error);
-      }
-    })();
+    const res = getNews(page, pageSize);
+    res.then((response) => {
+      setData([...data, ...response]);
+    });
+
+    console.log(data);
   }, [page]);
 
   useEffect(() => {
